@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Intrastructure
+namespace Infrastructure
 {
     public class Class1
     {
