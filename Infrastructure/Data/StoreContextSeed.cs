@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -54,7 +55,11 @@ namespace Infrastructure.Data
         }
 
       }
-
+      catch(Exception ex)
+      {
+          var logger = loggerFactory.CreateLogger<StoreContextSeed>();
+          logger.LogError(ex.Message);
+      }
     }
   }
 }
