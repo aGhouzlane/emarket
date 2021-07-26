@@ -17,7 +17,7 @@
 
 ## Description 📜
 
-An Ecommerce website that allows users to create new accounts, sign in/ sign out. Users can choose the product they like and add it to the cart. Users may proceed to checkout and enter their credit/debit card information and address and complete a transaction.  
+An Ecommerce website that allows users to create new accounts, sign in/ sign out. Users can choose the product they like and add them to the cart. Users may proceed to checkout and enter their credit/debit card information and address and complete a transaction.  
 
 ## Setup/Installation Requirements 🏗
 
