@@ -1,3 +1,4 @@
+using API.Errors;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ namespace API.Controllers
 
       if (thing == null)
       {
-        return NotFound();
+        return NotFound(new ApiResponse(404));
       }
 
       return Ok();
@@ -34,15 +35,14 @@ namespace API.Controllers
       return Ok();
     }
 
-    [HttpGet("notfound")]
+    [HttpGet("badrequest")]
     public ActionResult GetBadRequest()
     {
-
-      return BadRequest();
+      return BadRequest(new ApiResponse(400));
     }
 
-    [HttpGet("notfound")]
-    public ActionResult GetNotFoundRequest()
+    [HttpGet("badrequest/{id}")]
+    public ActionResult GetBadRequestById(int id)
     {
       return Ok();
     }
