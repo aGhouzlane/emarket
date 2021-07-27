@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Core.Interfaces;
 using Core.Specifications;
 using API.Dtos;
+using System.Linq;
 
 namespace API.Controllers
 {
@@ -15,7 +16,7 @@ namespace API.Controllers
     private readonly IGenericRepository<Product> _productsRepo;
     private readonly IGenericRepository<ProductBrand> _productBrandRepo;
     private readonly IGenericRepository<ProductType> _productTypeRepo;
-    public ProductsController(IGenericRepository<Product> productsRepo, 
+    public ProductsController(IGenericRepository<Product> productsRepo,
     IGenericRepository<ProductBrand> productBrandRepo,
     IGenericRepository<ProductType> productTypeRepo
     )
@@ -26,11 +27,20 @@ namespace API.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<Product>>> GetProducts()
+    public async Task<ActionResult<List<ProductToReturnDto>>> GetProducts()
     {
       var spec = new ProductTypeAndBrandSpecification();
       var products = await _productsRepo.ListAsync(spec);
-      return Ok(products);
+      return products.Select(product => new ProductToReturnDto
+      {
+        Id = product.Id,
+        Name = product.Name,
+        Description = product.Description,
+        PictureUrl = product.PictureUrl,
+        Price = product.Price,
+        ProductBrand = product.ProductBrand.Name,
+        ProductType = product.ProductType.Name
+      }).ToList();
     }
 
     [HttpGet("{id}")]
