@@ -9,5 +9,12 @@ namespace Core.Specifications
         AddInclude(x => x.ProductBrand);
         AddInclude(x => x.ProductType);
     }
+
+    public ProductTypeAndBrandSpecification(int id)
+    : base(x => x.Id == id)
+    {
+        AddInclude(x => x.ProductBrand);
+        AddInclude(x => x.ProductType);
+    }
   }
 }
