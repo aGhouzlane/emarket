@@ -16,4 +16,5 @@ namespace Core.Specifications
     public int? TypeId { get; set; }
     public string Sort { get; set; }
   }
+
 }
