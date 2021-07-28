@@ -4,10 +4,11 @@ namespace Core.Specifications
 {
   public class ProductTypeAndBrandSpecification : BaseSpecification<Product>
   {
-    public ProductTypeAndBrandSpecification()
+    public ProductTypeAndBrandSpecification(string sort)
     {
         AddInclude(x => x.ProductBrand);
         AddInclude(x => x.ProductType);
+        AddOrderBy(x => x.Name);
     }
 
     public ProductTypeAndBrandSpecification(int id)
