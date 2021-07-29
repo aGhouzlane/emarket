@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
  
   title = 'EMarket';
+  products: any[];
 
   constructor(private http: HttpClient){
 
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.http.get('https://localhost:5001/api/products').subscribe((response: any) => {
-      console.log(response);
+      this.products = response;
     });
   }
 }
